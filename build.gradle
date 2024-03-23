@@ -1,0 +1,75 @@
+plugins {
+	//id 'java'
+	id 'org.springframework.boot' version '3.2.4'
+	id 'io.spring.dependency-management' version '1.1.4'
+	id 'war'
+	id 'application'
+	id 'com.moowork.node' version '1.3.1'
+}
+
+group = 'com.izuiw'
+version = '0.0.1-SNAPSHOT'
+compileJava.options.encoding = 'UTF-8'
+
+mainClassName='com.izuiw.eodim.EodimApplication'
+
+java {
+	sourceCompatibility = '17'
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	//spring security
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	
+	//dev
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	
+	//db
+	runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
+	
+	
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'org.springframework.security:spring-security-test'
+	
+	//jsp
+	//implementation 'jakarta.servlet.jsp.jstl:jakarta.servlet.jsp.jstl-api'
+	//implementation 'org.glassfish.web:jakarta.servlet.jsp.jstl'
+	//implementation 'org.apache.tomcat.embed:tomcat-embed-jasper'
+
+
+
+
+}
+
+// build.gradle 설정 추가
+
+
+node {
+    workDir = file("./front-vue")
+    npmWorkDir = file("./front-vue")
+    nodeModulesDir = file("./front-vue")
+}
+
+task setUp (type: NpmTask) {
+    description = "Install Node.js packages"
+    args = ['install']
+    inputs.files file('package.json')
+    outputs.files file('node_modules')
+}
+
+task buildFrontEnd (type: NpmTask, dependsOn: setUp) {
+    description = "Build vue.js"
+    args = ['run', 'build']
+}
+
+processResources.dependsOn 'buildFrontEnd'
+
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
