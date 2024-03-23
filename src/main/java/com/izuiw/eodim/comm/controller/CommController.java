@@ -6,10 +6,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class CommController {
 
-	@GetMapping("/error")
+	@GetMapping("/main")
 	public String index() {
 		
-		System.out.println("호출 완 ");
 		return "index.html";
 	}
 	
