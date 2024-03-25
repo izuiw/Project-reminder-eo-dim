@@ -36,10 +36,11 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.springframework.security:spring-security-test'
 	
-	//jsp
-	//implementation 'jakarta.servlet.jsp.jstl:jakarta.servlet.jsp.jstl-api'
-	//implementation 'org.glassfish.web:jakarta.servlet.jsp.jstl'
-	//implementation 'org.apache.tomcat.embed:tomcat-embed-jasper'
+	//Slg4j 어노테이션을 위한 추가
+	//testCompileOnly 'org.projectlombok:lombok'
+	//testAnnotationProcessor 'org.projectlombok:lombok'
+	
+	
 
 
 
