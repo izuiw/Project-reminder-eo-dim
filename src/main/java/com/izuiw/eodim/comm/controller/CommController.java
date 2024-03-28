@@ -19,17 +19,25 @@ public class CommController {
 
 	private final Logger log = LoggerFactory.getLogger(CommController.class);
 	
+
+	private CommServiceImpl commService;
+	
 	@Autowired
-	private CommService commService = new CommServiceImpl();
+	public CommController(CommServiceImpl commService) {
+		this.commService = commService;
+	}
+	
 	
 	@GetMapping("/mainList")
 	public String reminderMainList() {
 		log.debug("reminder Main List 호출 성공 ");
 		
 		//service
-
+		String result = commService.getTime();
 		
-		return "div!";
+		log.debug("조회 완료 : " + result);
+		
+		return result;
 	}
 	
 	
