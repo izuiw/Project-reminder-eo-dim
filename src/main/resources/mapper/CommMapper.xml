@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper>
+
+<mapper namespace="com.izuiw.eodim.mapper.CommMapper">
+	<select id="getTime"  resultType="String">
+	 	SELECT '1' from dual
+	</select>
+</mapper>
