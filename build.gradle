@@ -11,6 +11,12 @@ group = 'com.izuiw'
 version = '0.0.1-SNAPSHOT'
 compileJava.options.encoding = 'UTF-8'
 
+//ext {
+//	userid = ''
+//	password = ''	
+//}
+
+
 mainClassName='com.izuiw.eodim.EodimApplication'
 
 java {
@@ -30,15 +36,23 @@ dependencies {
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	
 	//db
+ 	implementation 'org.springframework.boot:spring-boot-starter-jdbc'	
 	runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
 	
+	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.3'
+	
+	implementation 'mysql:mysql-connector-java:8.0.33'
 	
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.springframework.security:spring-security-test'
 	
+
+	
 	//Slg4j 어노테이션을 위한 추가
-	//testCompileOnly 'org.projectlombok:lombok'
-	//testAnnotationProcessor 'org.projectlombok:lombok'
+	testCompileOnly 'org.projectlombok:lombok'
+	testAnnotationProcessor 'org.projectlombok:lombok'
+	
+	compileOnly 'org.projectlombok:lombok'
 	
 	
 
@@ -68,8 +82,14 @@ task buildFrontEnd (type: NpmTask, dependsOn: setUp) {
     args = ['run', 'build']
 }
 
-processResources.dependsOn 'buildFrontEnd'
+//processResources.dependsOn 'buildFrontEnd'
 
+processResources {
+	dependsOn 'buildFrontEnd'
+	filesMatching('**/application.properties') {
+		expand(project.properties)
+	}
+}
 
 tasks.named('test') {
 	useJUnitPlatform()

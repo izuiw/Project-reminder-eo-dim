@@ -1,6 +1,8 @@
 package com.izuiw.eodim.comm.controller;
 
 
+import java.util.HashMap;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,13 +29,13 @@ public class CommController {
 	
 	
 	@GetMapping("/mainList")
-	public String reminderMainList() {
+	public HashMap<String, String> reminderMainList() {
 		
 		
 		log.debug("reminder Main List 호출 성공 ");
 		
 		//service
-		String result = commService.getTime();
+		HashMap<String, String> result = commService.getTime();
 		
 		log.debug("조회 완료 : " + result);
 		

@@ -23,7 +23,7 @@ public class CommServiceImpl implements CommService{
 	}
 
 	@Override
-	public String getTime() {
+	public HashMap<String, String> getTime() {
 		log.debug("서비스 클래스 호출");
 		
 		return mapper.getTime();

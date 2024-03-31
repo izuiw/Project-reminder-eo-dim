@@ -1,9 +1,10 @@
 package com.izuiw.eodim.mapper;
 
+import java.util.HashMap;
+
 import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
 public interface CommMapper {
-	
-	String getTime();
+	HashMap<String, String> getTime();
 }
