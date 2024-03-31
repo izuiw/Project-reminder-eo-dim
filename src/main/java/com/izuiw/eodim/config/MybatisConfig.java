@@ -13,7 +13,7 @@ import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 
 
-@ComponentScan(basePackages = "com.izuiw.eodim")
+
 @Configuration
 @PropertySource("classpath:/application.properties") //①
 @MapperScan(value="com.izuiw.eodim.mapper")
@@ -31,7 +31,7 @@ public class MybatisConfig {
 	    @Bean
 	    public DataSource dataSource() throws Exception {
 	        DataSource dataSource = new HikariDataSource(hikariConfig());
-	        System.out.println(dataSource.toString());
+	        //System.out.println("마이바티스 컨피그 :: " + dataSource.toString());
 	        return dataSource;
 	    }
 
