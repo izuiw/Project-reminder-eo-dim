@@ -8,7 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.izuiw.eodim.mapper.comm.CommMapper;
+import com.izuiw.eodim.mapper.CommMapper;
 
 @Service
 public class CommServiceImpl implements CommService{
@@ -22,7 +22,7 @@ public class CommServiceImpl implements CommService{
 		this.mapper = mapper;
 	}
 
-
+	@Override
 	public String getTime() {
 		log.debug("서비스 클래스 호출");
 		
