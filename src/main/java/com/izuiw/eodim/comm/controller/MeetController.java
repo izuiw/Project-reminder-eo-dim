@@ -12,26 +12,27 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.izuiw.eodim.comm.service.CommService;
 import com.izuiw.eodim.comm.service.CommServiceImpl;
+import com.izuiw.eodim.comm.service.MeetService;
 
 //@Slf4j
 @RestController
 @RequestMapping("/eodim/meet")
-public class CommController {
+public class MeetController {
 	
 	/*
-	 * 공통 기능 Controller 
-	 *  1. Login 기능 구현
-	 *  2. 회원 개인정보 관리
-	 *  3. 월별 통계
+	 * 일정 / Meet Controller 
+	 *  1. 일정 추가 및 조회 삭제등 일정 관리 기능
+	 *  2. Map api 연동하여,일정관련 장소 저장 및 조회하도록 구현 필요 
+	 *  3. 추후 일정에 모임 인원 추가 기능 구현 예정 
 	 * 
 	 */
 	
-	private final Logger log = LoggerFactory.getLogger(CommController.class);
+	private final Logger log = LoggerFactory.getLogger(MeetController.class);
 	
-	private CommService commService;
+	private MeetService commService;
 	
 	@Autowired
-	public CommController(CommService commService) {
+	public MeetController(MeetService commService) {
 		this.commService = commService;
 	}
 	
