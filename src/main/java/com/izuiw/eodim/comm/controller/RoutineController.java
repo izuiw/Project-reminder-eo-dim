@@ -12,35 +12,35 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.izuiw.eodim.comm.service.CommService;
 import com.izuiw.eodim.comm.service.CommServiceImpl;
+import com.izuiw.eodim.comm.service.RoutineService;
 
 //@Slf4j
 @RestController
-@RequestMapping("/eodim/meet")
-public class CommController {
+@RequestMapping("/eodim/routine")
+public class RoutineController {
 	
 	/*
-	 * 공통 기능 Controller 
-	 *  1. Login 기능 구현
-	 *  2. 회원 개인정보 관리
-	 *  3. 월별 통계
+	 * 개인 루틴 - 반복 일정  Controller 
+	 *  1. 관리 기능
+	 *  2. 오늘 등록 루틴 성공 실패 기능 구현  
 	 * 
 	 */
 	
-	private final Logger log = LoggerFactory.getLogger(CommController.class);
+	private final Logger log = LoggerFactory.getLogger(CommServiceImpl.class);
 	
-	private CommService commService;
+	private RoutineService commService;
 	
 	@Autowired
-	public CommController(CommService commService) {
+	public RoutineController(RoutineService commService) {
 		this.commService = commService;
 	}
 	
 	
-	@GetMapping("/MeetMain")
+	@GetMapping("/RoutineMain")
 	public HashMap<String, String> reminderMainList() {
 		
 		
-		log.debug("MeetMain 호출 성공 ");
+		log.debug("Rutine Main 호출 성공 ");
 		
 		//service
 		HashMap<String, String> result = commService.getTime();
